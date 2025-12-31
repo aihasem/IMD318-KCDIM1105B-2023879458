@@ -1,0 +1,456 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Aiha's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #004a99 0%, #0066cc 100%);
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background-color: #f0f8ff;
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(0, 74, 153, 0.1);
+        }
+
+        .exp-category {
+            font-weight: bold;
+            color: #004a99;
+            margin-top: 40px;
+            display: block;
+            font-size: 1.3em;
+            padding: 15px;
+            background: linear-gradient(135deg, #e7f3ff 0%, #cce7ff 100%);
+            border-radius: 10px;
+            border-left: 5px solid #004a99;
+            box-shadow: 0 2px 10px rgba(0, 74, 153, 0.1);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #e7f3ff 0%, #cce7ff 100%);
+            color: #004a99;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 8px 5px;
+            font-size: 0.9em;
+            border: 2px solid #004a99;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #004a99 0%, #0066cc 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 74, 153, 0.3);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #004a99, #0066cc);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .filter-btn {
+            background: white;
+            color: #004a99;
+            border: 2px solid #004a99;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #004a99 0%, #0066cc 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 74, 153, 0.3);
+        }
+
+        .project-count {
+            text-align: center;
+            font-size: 1.1em;
+            color: #004a99;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 60px 20px 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            padding-left: 0;
+        }
+
+        .footer-section a:hover {
+            color: #ffffff;
+            padding-left: 8px;
+            transform: translateX(3px);
+        }
+
+        footer .icon-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            margin-top: 10px;
+            cursor: default;
+        }
+
+        footer .icon-box i {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        footer .icon-box span {
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        footer .icon-box strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .quotes-text {
+            text-align: center;
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            margin: 30px 0;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .heart {
+            color: #ff6b6b;
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px 25px;
+            }
+
+            .footer-content {
+                gap: 35px;
+                margin-bottom: 35px;
+                padding-bottom: 30px;
+            }
+
+            .footer-section h3 {
+                font-size: 16px;
+            }
+
+            .quotes-text {
+                font-size: 15px;
+                margin: 25px 0;
+            }
+
+            .copyright {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            footer .icon-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-indicator" id="scrollBar"></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
+        <a href="education.html">Education</a>
+        <a href="experience.html">Experience</a>
+        <a href="family.html">My Family</a>
+        <a href="skill.html">Skills</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h1>Professional Experience &#127970;</h1>
+        <p>A summary of my technical projects and industrial training.</p>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterExperience('all')">All</button>
+            <button class="filter-btn" onclick="filterExperience('projects')">Projects</button>
+            <button class="filter-btn" onclick="filterExperience('training')">Training</button>
+        </div>
+
+        <div class="project-count" id="projectCount">Total Experience: 3</div>
+
+        <span class="exp-category exp-item projects">&#128187; Coding & Technical Projects</span>
+        <table class="exp-item projects">
+            <tr>
+                <th style="width: 30%;">Project</th>
+                <th>Key Contributions</th>
+            </tr>
+            <tr onclick="highlightRow(this)">
+                <td><strong>Personal Portfolio</strong></td>
+                <td>Developed a 7 pages responsive website using HTML and CSS. Focused on clean navigation.</td>
+            </tr>
+            <tr onclick="highlightRow(this)">
+                <td><strong>Academic Web Projects</strong></td>
+                <td>Built mini-systems and forms as part of Information Management coursework (HTML, CSS, & Javascript).</td>
+            </tr>
+        </table>
+
+        <span class="exp-category exp-item training">&#127970; Industrial Training</span>
+        <table class="exp-item training">
+            <tr>
+                <th style="width: 30%;">Organization</th>
+                <th>Role & Responsibility</th>
+            </tr>
+            <tr onclick="highlightRow(this)">
+                <td><strong>PKNK</strong><br><small>(Perbadanan Kemajuan Negeri Kedah)</small></td>
+                <td>Assisted in administrative tasks, digital record management, and document filing using MS Office & Canva.</td>
+            </tr>
+        </table>
+
+        <span class="exp-category">&#10024; Core Competencies</span>
+        <div style="margin-top: 20px; text-align: center;">
+            <span class="skill-tag" onclick="showSkillInfo('HTML & CSS')">HTML & CSS</span>
+            <span class="skill-tag" onclick="showSkillInfo('Microsoft Office')">Microsoft Word & Excel</span>
+            <span class="skill-tag" onclick="showSkillInfo('Canva')">Canva Design</span>
+            <span class="skill-tag" onclick="showSkillInfo('Records')">Record Management</span>
+            <span class="skill-tag" onclick="showSkillInfo('Team')">Teamwork</span>
+        </div>
+
+        <div id="skillInfo" style="margin-top: 30px; padding: 20px; background: #f0f8ff; border-radius: 10px; display: none;">
+            <h3 id="skillTitle"></h3>
+            <p id="skillDescription"></p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Navigation</h3>
+                    <a href="index.html">Home</a>
+                    <a href="aboutme.html">About Me</a>
+                    <a href="education.html">My Education</a>
+                    <a href="experience.html">My Experience</a>
+                    <a href="family.html">My Familia</a>
+                    <a href="skill.html">My Skills</a>
+                    <a href="contact.html">Contact Me</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Don't Forget To</h3>
+                    <div class="icon-box">
+                        <i class="fa fa-phone"></i>
+                        <div>
+                            <span>Always Call Your <strong>Loved Ones</strong> &#129402;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="quotes-text">
+                Your dream doesn't have to be a grand one. It can be anyone or anything.
+            </p>
+            
+            <p class="copyright">
+                &copy; 2025 Aiha's Personal Portfolio | Designed with <span class="heart">&#10084;&#65039</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollBar").style.width = scrolled + "%";
+        };
+
+        // Highlight table row on click
+        function highlightRow(row) {
+            var allRows = document.querySelectorAll('tr');
+            allRows.forEach(function(r) {
+                r.style.backgroundColor = '';
+            });
+            row.style.backgroundColor = '#cce7ff';
+        }
+
+        // Filter experience by category
+        function filterExperience(category) {
+            var items = document.querySelectorAll('.exp-item');
+            var buttons = document.querySelectorAll('.filter-btn');
+            var count = 0;
+
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            items.forEach(function(item) {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                    count++;
+                } else if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    count++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.getElementById('projectCount').textContent =
+                category === 'all' ? 'Total Experience: 3' : 'Showing: ' + count + ' item(s)';
+        }
+
+        // Show skill information
+        function showSkillInfo(skill) {
+            var info = document.getElementById('skillInfo');
+            var title = document.getElementById('skillTitle');
+            var desc = document.getElementById('skillDescription');
+
+            var skillData = {
+                'HTML & CSS': 'Building and styling modern, responsive web pages with clean code structure.',
+                'Microsoft Office': 'Proficient in Word, Excel, and PowerPoint for documentation and data management.',
+                'Canva': 'Creating professional designs, presentations, and marketing materials.',
+                'Records': 'Organizing and managing electronic records following proper information management standards.',
+                'Team': 'Collaborating effectively with team members on various projects and presentations.'
+            };
+
+            title.textContent = skill;
+            desc.textContent = skillData[skill] || 'Information about this skill.';
+            info.style.display = 'block';
+
+            info.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
+    </script>
+</body>
+
+</html>
